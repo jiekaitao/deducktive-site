@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161426" media="(prefers-color-scheme: dark)">
+<title>Privacy, in detail. Deducktive</title>
+<meta name="description" content="What Deducktive reads, keeps, hides and sends, line by line. Deducktive is a Mac app in development. Today the app makes no network requests.">
+<link rel="canonical" href="https://deducktive.com/privacy.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-dark-32.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-dark-16.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/nunito-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to the main content</a>
+
+<header class="top">
+  <a class="wordmark" href="./" aria-label="Deducktive, home page">Deducktive</a>
+  <a class="top-link" href="./">Home</a>
+</header>
+
+<main class="doc field field-plain" id="main">
+  <div class="wrap">
+    <div class="doc-head">
+      <p class="tag">In development</p>
+      <h1>Privacy, in detail.</h1>
+      <p>Deducktive is a Mac app in development. Nothing can be downloaded yet. This page says how the app is being built today and what is planned. It will change as the app does.</p>
+    </div>
+
+    <table class="ptable glass">
+      <caption class="vh">What Deducktive reads, keeps, leaves out, hides and sends</caption>
+      <tbody>
+        <tr>
+          <th scope="row">What it reads</th>
+          <td>
+            <p>The words showing on your screen, the name of the app, the window or page title, the website address, and the time.</p>
+            <p>It reads what apps show as text. It does not record your keystrokes. It does not record sound.</p>
+            <p class="muted">Mac only today.</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Where the text is analysed</th>
+          <td>
+            <p>On your Mac. Today the app makes no network requests.</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">What Watch keeps<br><span class="tag">In development</span></th>
+          <td>
+            <p>A short working buffer of recent screen text, and its notes on a possible scam. Both are held in memory and cleared when you pause or quit.</p>
+            <p class="muted">No warning never means safe.</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">What Recall keeps<br><span class="tag">In development</span></th>
+          <td>
+            <p>Text only: the words, where they were, and when. No screenshots, no thumbnails, no video, no audio.</p>
+            <p>The plan is for Recall to stay off unless you turn it on, and to keep text only for the length of time you choose. The switch and the starting length are not settled yet.</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Where Recall's text is kept, and how it is locked</th>
+          <td>
+            <p>On this Mac. The saved text is encrypted with a key that this Mac holds. Opening it is meant to need Touch ID, an Apple Watch or your Mac login password, with no separate Deducktive password.</p>
+            <p class="muted">The lock is built, but it has not yet been tried with real Touch ID.</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">What it is built not to read</th>
+          <td>
+            <ul class="two">
+              <li>Password boxes</li>
+              <li>Private browsing windows</li>
+              <li>Password apps, and the Passwords settings</li>
+              <li>Windows that ask not to be captured</li>
+              <li>Shared or remote-controlled screens</li>
+              <li>Any app or website you leave out</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">What Recall is built not to save</th>
+          <td>
+            <p>Bank, investment, tax, payroll and patient websites, and payment pages. Watch may check the words on such a page while it is in front of you.</p>
+            <p class="muted">An e-mail from your bank is saved, with the numbers hidden, so that you can ask what it said.</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">What it hides before saving</th>
+          <td>
+            <ul class="two">
+              <li>Card numbers and security codes</li>
+              <li>Social Security and other ID numbers</li>
+              <li>One-time codes</li>
+              <li>Passwords shown on screen</li>
+              <li>Bank account and routing numbers</li>
+              <li>Recovery keys and seed phrases</li>
+            </ul>
+            <p>The saved text reads, for example, "Card ending [card number hidden]".</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">What can leave your Mac, and when</th>
+          <td>
+            <p><strong>Today the app makes no network requests.</strong> There is no account and no sync.</p>
+            <ul>
+              <li><strong>Things you ask for.</strong> "Open page" opens that page in your browser, which uses the internet as usual.</li>
+              <li><strong>Lookups: planned.</strong> When they come, a lookup will run only when you click, after it shows where it goes and exactly what is sent.</li>
+              <li><strong>Circle: planned, not built.</strong> A short note you wrote or approved, to the people you chose, when you ask for help. How a note will travel is not designed or reviewed yet, so this page makes no promise about it.</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Which models run</th>
+          <td>
+            <p>The models run on your Mac. The app calls no cloud model. Simple rules run before any model.</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Permissions it asks for, and why</th>
+          <td>
+            <ul>
+              <li><strong>Screen Recording</strong> (macOS calls it "Screen &amp; System Audio Recording"). This lets Deducktive read the words on your screen. It does not save pictures or sound.</li>
+              <li><strong>Accessibility.</strong> This tells Deducktive which app and page the words came from.</li>
+              <li><strong>Notifications</strong> (optional). This lets Deducktive show a gentle note when something looks wrong.</li>
+            </ul>
+            <p class="muted">Nothing is read until you have finished setup and pressed "Start Deducktive".</p>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">What you control</th>
+          <td>
+            <p>The duck stays visible in the menu bar while Deducktive can read the screen. One click pauses it. There is no hidden mode.</p>
+            <p>Forget one thing, a website, an app, the last hour, today, or everything. Leave out any app or website. Quit whenever you like. "Erase everything and quit" removes the saved text, the settings and the key.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="limits glass">
+      <h2>Honest limits</h2>
+      <ul>
+        <li>No warning never means safe. It can miss a scam. It can also warn about something that is fine.</li>
+        <li>Mac only today. It cannot hear a phone call, and it cannot see your phone.</li>
+        <li>It reads what apps show as text. It cannot help while it is paused, or in windows it does not read, such as private windows.</li>
+        <li>Anyone who knows your Mac login password can open the saved text at your Mac, just as they can open your Mail.</li>
+        <li>It is in development. Some of what is described here may change before release.</li>
+        <li>No accuracy or speed measurements are published here, so this page makes no claims about either.</li>
+      </ul>
+    </div>
+
+    <p class="doc-back"><a class="btn" href="./">Back to the home page</a></p>
+  </div>
+</main>
+
+<footer class="foot">
+  <p>© 2026 Deducktive</p>
+  <p>No cookies. No trackers.</p>
+</footer>
+
+</body>
+</html>

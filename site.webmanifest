@@ -1,7 +1,7 @@
 {
   "name": "Deducktive",
   "short_name": "Deducktive",
-  "description": "A Mac app, still in development, that spots scams as they happen and remembers what you saw. Everything stays on your Mac.",
+  "description": "A duck in your Mac's menu bar. It reads the text on your screen, on your Mac. Mac only today. In development.",
   "start_url": "/",
   "scope": "/",
   "display": "browser",
