@@ -3,52 +3,750 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deducktive</title>
-<meta name="description" content="Deducktive is a Mac app in development that warns you about scams as they happen and remembers what you saw, all on your own Mac.">
-<link rel="canonical" href="https://deducktive.com/">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32-dark.png" media="(prefers-color-scheme: dark)">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; script-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F6AA1E" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1C1A2E" media="(prefers-color-scheme: dark)">
-<style>
-  :root { --bg1: #FFD98A; --bg2: #F6AA1E; --bg3: #E07A10; --ink: #26223F; --ink2: #4A4973; --glass: rgba(255, 255, 255, .58); --edge: rgba(255, 255, 255, .8); }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg1: #2B2748; --bg2: #1C1A2E; --bg3: #5A3410; --ink: #FFF6DF; --ink2: #D9D3F0; --glass: rgba(40, 36, 68, .55); --edge: rgba(255, 255, 255, .16); }
-  }
-  * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; }
-  body {
-    font: 18px/1.5 ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    color: var(--ink);
-    background: radial-gradient(120% 90% at 15% 10%, var(--bg1), transparent 60%), radial-gradient(90% 80% at 90% 95%, var(--bg3), transparent 60%), var(--bg2);
-    display: grid; place-items: center; padding: 24px;
-  }
-  main {
-    width: min(100%, 560px); text-align: center; padding: 44px 32px 36px;
-    background: var(--glass); border: 1px solid var(--edge); border-radius: 32px;
-    -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3);
-    box-shadow: 0 24px 60px rgba(50, 46, 75, .22);
-  }
-  img { width: 168px; height: 168px; display: block; margin: 0 auto 20px; }
-  h1 { font-size: clamp(2.2rem, 7vw, 3rem); line-height: 1.1; margin: 0 0 8px; letter-spacing: -.02em; }
-  .tag { font-size: 1.25rem; color: var(--ink2); margin: 0 auto 22px; font-weight: 600; }
-  p { margin: 0 auto 14px; max-width: 34ch; }
-  .note { font-size: 1rem; color: var(--ink2); margin-top: 22px; }
-  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { main { background: var(--bg1); } }
-</style>
+<meta name="theme-color" content="#211E3A" media="(prefers-color-scheme: dark)">
+<title>Deducktive. Spots scams as they happen. Remembers what you saw.</title>
+<meta name="description" content="Deducktive is a Mac app, still in development, that spots scams as they happen, explains them in plain and calm words, and remembers what you saw so you can ask later. Everything runs and stays on your Mac.">
+<link rel="canonical" href="https://deducktive.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Deducktive">
+<meta property="og:url" content="https://deducktive.com/">
+<meta property="og:title" content="Deducktive. Spots scams as they happen. Remembers what you saw.">
+<meta property="og:description" content="A Mac app, still in development, that warns in plain and calm words when something on the screen is a scam, and finds what you saw when you ask. Everything stays on your Mac.">
+<meta property="og:image" content="https://deducktive.com/assets/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Deducktive duck, a clay duck in a navy detective hat and coat, beside the words: Spots scams as they happen. Remembers what you saw.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Deducktive. Spots scams as they happen. Remembers what you saw.">
+<meta name="twitter:description" content="A Mac app, still in development. Calm scam warnings and a private memory of what you saw. Everything stays on your Mac.">
+<meta name="twitter:image" content="https://deducktive.com/assets/og.png">
+<meta name="twitter:image:alt" content="The Deducktive duck, a clay duck in a navy detective hat and coat, beside the words: Spots scams as they happen. Remembers what you saw.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-dark-32.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-dark-16.png" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/nunito-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-<main>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/icon-dark-256.webp 1x, assets/icon-dark-512.webp 2x">
-    <img src="assets/icon-256.webp" srcset="assets/icon-256.webp 1x, assets/icon-512.webp 2x" width="168" height="168" alt="Deducktive app icon: a clay duck in a detective hat">
-  </picture>
-  <h1>Deducktive</h1>
-  <p class="tag">Sharp eyes. Calm waters.</p>
-  <p>A Mac app that warns you about scams as they happen and helps you find things you saw before.</p>
-  <p>Everything stays on your own Mac.</p>
-  <p class="note">In development. Nothing to download yet. The full site is on its way.</p>
+
+<svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6.5" y="5" width="3.8" height="14" rx="1.3"/><rect x="13.7" y="5" width="3.8" height="14" rx="1.3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 2.8v5.4c0 4.6-3 8.2-7.5 9.8-4.5-1.6-7.5-5.2-7.5-9.8V5.8z"/><path d="M8.8 12.2l2.3 2.3 4.3-4.6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.2 3.6h2.9l1.5 4.1-2 1.5a11.5 11.5 0 0 0 6.2 6.2l1.5-2 4.1 1.5v2.9a2 2 0 0 1-2.2 2C10 19.2 4.8 14 4.2 5.8a2 2 0 0 1 2-2.2z"/></symbol>
+  <symbol id="i-xmark" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5.5" y="10.5" width="13" height="9.5" rx="2.6"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+  <symbol id="i-envelope" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.6"/><path d="M4.2 7.6l7.8 5.9 7.8-5.9"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M15.6 8.4l-2.1 5.1-5.1 2.1 2.1-5.1z"/></symbol>
+  <symbol id="i-message" viewBox="0 0 24 24"><path d="M12 4.5c4.7 0 8.5 3.1 8.5 7s-3.8 7-8.5 7c-1 0-2-.1-2.9-.4L5 19.5l1-3.3C4.5 15 3.5 13.3 3.5 11.5c0-3.9 3.8-7 8.5-7z"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M3.5 12s3.2-6 8.5-6 8.5 6 8.5 6-3.2 6-8.5 6-8.5-6-8.5-6z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+  <symbol id="i-eye-slash" viewBox="0 0 24 24"><path d="M3.5 12s3.2-6 8.5-6 8.5 6 8.5 6-3.2 6-8.5 6-8.5-6-8.5-6z"/><circle cx="12" cy="12" r="2.6"/><path d="M5 4.5l14 15"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5.5 12.5l4.2 4.2L18.5 7.5"/></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 4.2l8.8 15.3H3.2z"/><path d="M12 10v4.4"/><path d="M12 17.2v.1"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><path d="M8.3 2.6h7.4l5.7 5.7v7.4l-5.7 5.7H8.3l-5.7-5.7V8.3z" fill="currentColor" stroke="none"/><path d="M12 7v6.4" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="16.9" r="1.35" fill="#fff"/></symbol>
+  <symbol id="i-mac" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="11.5" rx="2.2"/><path d="M9 20h6M12 16v4"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5"/><path d="M12 7.8v.1"/></symbol>
+  <symbol id="i-image-slash" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.6"/><path d="M4 16l4.5-4.5 3.5 3.5 2.5-2.5 5.5 5"/><path d="M4 3.5l16 17"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12.2l8.5-8.5M16 7.2l2.4 2.4M13.8 9.4l1.8 1.8"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.1A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c.7-3.6 3.4-5.8 7-5.8s6.3 2.2 7 5.8"/><path d="M9.6 17.2l1.8 1.8 3.2-3.4"/></symbol>
+  <symbol id="i-tools" viewBox="0 0 24 24"><path d="M14.5 6.2a3.8 3.8 0 0 0-5 4.7l-5.3 5.3a1.6 1.6 0 0 0 2.3 2.3l5.3-5.3a3.8 3.8 0 0 0 4.7-5l-2.4 2.4-2-2z"/></symbol>
+  <symbol id="i-download-off" viewBox="0 0 24 24"><path d="M12 4.5v9.5M8 10.5l4 4 4-4M5 19.5h14"/><path d="M4.5 4.5l15 15"/></symbol>
+  <symbol id="i-form-off" viewBox="0 0 24 24"><rect x="4.5" y="5" width="15" height="14" rx="2.6"/><path d="M8 10h8M8 14h5"/><path d="M4 3.5l16 17"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to the main content</a>
+
+<header class="site-header">
+  <div class="bar glass">
+    <a class="wordmark" href="#top" aria-label="Deducktive, back to the top">
+      <picture><source media="(prefers-color-scheme: dark)" srcset="assets/img/logo-dark-88.webp"><img src="assets/img/logo-88.webp" width="44" height="44" alt=""></picture>Deducktive
+    </a>
+    <nav class="site-nav" aria-label="Sections of this page">
+      <ul>
+        <li><a href="#what">What it does</a></li>
+        <li><a href="#protect">Scam protection</a></li>
+        <li><a href="#ask">Ask</a></li>
+        <li><a href="#families">Families</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#early-access">Early access</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Hero -->
+  <section class="hero sheet field field-sun" id="top" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="status glass"><span class="dot" aria-hidden="true"></span>A Mac app, still being built</p>
+          <h1 id="hero-h"><span>Spots scams as they happen.</span> <span>Remembers what you saw.</span></h1>
+          <p class="hero-sub">For you, or for a parent you look out for. Deducktive warns in plain, calm words when something on the screen is a scam. It finds what you saw when you ask. Nothing about your screen leaves the Mac.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#what">See what it does</a>
+            <a class="btn btn-glass glass" href="#early-access">Early access</a>
+          </div>
+          <p class="req">Not released yet. It will need a Mac with Apple silicon and macOS 26 or later.</p>
+        </div>
+
+        <div class="hero-art">
+          <div class="ripples" aria-hidden="true"><i></i><i></i><i></i></div>
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="assets/img/icon-dark-350.webp 1x, assets/img/icon-dark-700.webp 2x">
+            <img class="hero-icon" src="assets/img/icon-350.webp" srcset="assets/img/icon-350.webp 1x, assets/img/icon-700.webp 2x" width="350" height="350" alt="The Deducktive app icon: a soft clay duck in a navy detective hat and coat." fetchpriority="high">
+          </picture>
+          <span class="chip glass"><svg class="i" aria-hidden="true"><use href="#i-mac"/></svg>Stays on this Mac</span>
+          <span class="chip glass"><svg class="i" aria-hidden="true"><use href="#i-image-slash"/></svg>No pictures saved</span>
+          <span class="chip glass"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg>No passwords kept</span>
+        </div>
+      </div>
+
+      <h2 class="vh" id="promises-h">Three promises: local, private, kind</h2>
+      <div class="promises">
+        <div class="promise glass">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-mac"/></svg>Local.</h3>
+          <p>The reading, the checking and the answering all happen on your Mac.</p>
+          <p>There is no account and no cloud. Nothing about your screen is sent anywhere.</p>
+        </div>
+        <div class="promise glass">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg>Private.</h3>
+          <p>Deducktive saves words, never pictures. Passwords, card numbers and codes are hidden before anything is saved.</p>
+          <p>What it remembers is locked. It opens only with Touch ID or your Mac password.</p>
+        </div>
+        <div class="promise glass">
+          <h3><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Kind.</h3>
+          <p>Warnings say what the scammer is doing, what to do next, and what is still fine.</p>
+          <p>Nobody is blamed. Every warning can be overridden, because you are in charge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. What it does -->
+  <section class="sheet field field-night" id="what" aria-labelledby="what-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">What it does</p>
+        <h2 class="h2" id="what-h">One quiet reader. Two jobs.</h2>
+        <p class="lead">Deducktive reads the same words you do, and uses them twice: once to watch for scams, and once to help you find things later.</p>
+      </div>
+
+      <div class="duo">
+        <article class="demo glass reveal">
+          <div class="demo-head">
+            <p class="tag">It warns you</p>
+            <h3 class="h3">A calm stop when something is a scam</h3>
+            <p>One card says what to do, why, and what is still fine. Then you choose.</p>
+          </div>
+          <div class="demo-body">
+            <div class="warn paper" role="img" aria-label="Illustration of a Deducktive warning, addressed to Margaret. It reads: Stop. This is a scam. Don't call this number. Real Apple support never shows a phone number in a pop-up. Your Mac is fine. Close this page and nothing bad will happen. The card offers three choices: Call Maya, Close this page, and I'm sure it's fine. A last line says: Seen in Safari just now. Maya will get a short note, never your screen.">
+              <div class="warn-from">Deducktive<span class="sp"></span><span class="for">For Margaret</span></div>
+              <svg class="stop" viewBox="0 0 24 24"><use href="#i-stop"/></svg>
+              <p class="warn-h">Stop. This is a scam.</p>
+              <p class="warn-lead">Don't call this number. Real Apple support never shows a phone number in a pop-up.</p>
+              <p class="warn-calm">Your Mac is fine. Close this page and nothing bad will happen.</p>
+              <div class="warn-actions">
+                <span class="fbtn primary"><svg class="i"><use href="#i-phone"/></svg>Call Maya</span>
+                <span class="fbtn outline">Close this page</span>
+              </div>
+              <div class="warn-foot">
+                <span class="warn-quiet">I'm sure it's fine</span>
+                <p class="warn-note">Seen in Safari just now. Maya will get a short note, never your screen.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="demo glass reveal">
+          <div class="demo-head">
+            <p class="tag">It answers you</p>
+            <h3 class="h3">An answer that shows where and when</h3>
+            <p>Ask in your own words. The answer comes with the app, the place and the date.</p>
+          </div>
+          <div class="demo-body" role="img" aria-label="Illustration of a question and an answer. The question is: What was the plumber's phone number? The answer is (415) 555-0142, the phone number for Rivera Plumbing and Drain, seen in Safari on yelp.com on Tuesday, November 3 at 3:14 PM, one week ago. The words around it read: Licensed and insured since 1998. Call for a free estimate: (415) 555-0142.">
+            <p class="q paper"><svg class="i"><use href="#i-search"/></svg>What was the plumber's phone number?</p>
+            <div class="ans paper">
+              <div class="ans-top"><b>Answer</b><span><svg class="i"><use href="#i-mac"/></svg>From your memory on this Mac</span></div>
+              <div>
+                <p class="ans-val">(415) 555-0142</p>
+                <p class="ans-sub">The phone number for Rivera Plumbing &amp; Drain.</p>
+              </div>
+              <div class="prov">
+                <span class="appicon safari"><svg class="i"><use href="#i-compass"/></svg></span>
+                <div>
+                  <p class="where">Seen in Safari on yelp.com</p>
+                  <p>Tuesday, November 3 at 3:14 PM · one week ago</p>
+                  <p>Page: Rivera Plumbing &amp; Drain, San Jose</p>
+                </div>
+              </div>
+              <blockquote class="quote">Licensed and insured since 1998. Call for a free estimate: <mark>(415) 555-0142</mark>. Open Monday to Saturday, 8 am to 6 pm.</blockquote>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="vh">How it works, in four steps</h3>
+      <ol class="steps reveal">
+        <li class="step">
+          <span class="step-n" aria-hidden="true">1</span>
+          <h3>It reads the words on your screen</h3>
+          <p>Words, not pictures. Deducktive notes which app or website they were in, and the time.</p>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">2</span>
+          <h3>It checks them on your Mac</h3>
+          <p>Simple checks run first. A closer look happens only when something seems wrong. Nothing is sent away to be checked.</p>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">3</span>
+          <h3>It warns you calmly</h3>
+          <p>In plain words it says what is wrong, what to do next, and what is still fine. Then you choose.</p>
+        </li>
+        <li class="step">
+          <span class="step-n" aria-hidden="true">4</span>
+          <h3>It remembers, so you can ask later</h3>
+          <p>The same words are saved as text. Ask a question and the answer shows where and when you saw it.</p>
+        </li>
+      </ol>
+
+      <p class="fine glass reveal"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span><strong>A little more exactly.</strong> Most apps already share their text with macOS for accessibility, and Deducktive reads that. When an app does not, Deducktive looks at that window for a moment to read the words, then discards the picture. No picture is ever saved. Text you have already seen is not saved twice.</span></p>
+    </div>
+  </section>
+
+  <!-- 3. How it protects -->
+  <section class="field field-plain" id="protect" aria-labelledby="protect-h">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="sec-head">
+          <p class="eyebrow">Scam protection</p>
+          <h2 class="h2" id="protect-h">It notices the scam while it is on the screen.</h2>
+          <p class="lead">Not after the money has moved. Deducktive reads along wherever the words appear: in your browser, in Mail, in Messages, or when an app is being installed.</p>
+        </div>
+        <div class="art" data-art="protect">
+          <img src="assets/img/art-protect-400.webp" srcset="assets/img/art-protect-400.webp 1x, assets/img/art-protect-800.webp 2x" width="400" height="400" loading="lazy" decoding="async" alt="The clay duck holds up a hand in front of a pop-up window that shows a red warning sign.">
+        </div>
+      </div>
+
+      <div class="catch-grid">
+        <div class="panel glass reveal">
+          <h3 class="h3">What it looks for</h3>
+          <ul class="catch-list">
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg><span>Fake tech support <span class="nw">pop-ups</span></span></li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Emails pretending to be your bank</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Fake bills and renewals</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Gift card demands</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Bitcoin or crypto demands</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Strangers asking to control your Mac</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Fake home rentals</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Fake job offers</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Fake delivery or toll notices</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Someone pretending to be family</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Investments that are too good to be true</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Someone pretending to be the government</li>
+          </ul>
+        </div>
+        <div class="panel glass reveal">
+          <h3 class="h3">Two kinds of warning, and no more</h3>
+          <div class="levels">
+            <div class="level">
+              <span class="sign caution" aria-hidden="true"><svg class="i"><use href="#i-warning"/></svg></span>
+              <div>
+                <h4>When it might be a scam: a gentle note</h4>
+                <p>A small note appears near the duck in the menu bar. It does not interrupt what you are doing. You can close the page, or say "It's fine".</p>
+              </div>
+            </div>
+            <div class="level">
+              <span class="sign stopper" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-stop"/></svg></span>
+              <div>
+                <h4>When it is a scam: a calm full-screen stop</h4>
+                <p>The scam page is dimmed so it cannot be clicked. One card says what to do. You can call your helper, close the page, or say "I'm sure it's fine".</p>
+              </div>
+            </div>
+          </div>
+          <p class="small">No countdowns. No red screens. No scores. Closing a page deletes nothing, and you can always carry on if you choose to.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-h reveal">Three warnings, word for word</h3>
+      <p class="sub-p reveal">A full-screen warning always has three parts: what to do, why, and what is still fine. A gentle note is shorter.</p>
+      <div class="examples">
+        <article class="ex glass reveal">
+          <p class="ex-kind">Fake tech support pop-up <span>Full screen</span></p>
+          <span class="sign stopper" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-stop"/></svg></span>
+          <h4>Stop. This is a scam.</h4>
+          <p class="do">Don't call this number. Real Apple support never shows a phone number in a pop-up.</p>
+          <p class="calm">Your Mac is fine. Close this page and nothing bad will happen.</p>
+        </article>
+        <article class="ex glass reveal">
+          <p class="ex-kind">Fake bill or renewal <span>Gentle note</span></p>
+          <span class="sign caution" aria-hidden="true"><svg class="i"><use href="#i-warning"/></svg></span>
+          <h4>This might be a scam</h4>
+          <p class="do">This bill is for something you may not have bought. The phone number in it is not the real company's.</p>
+          <p class="calm">Real companies charge the card you gave them and email a receipt.</p>
+        </article>
+        <article class="ex glass reveal">
+          <p class="ex-kind">Gift card demand <span>Full screen</span></p>
+          <span class="sign stopper" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-stop"/></svg></span>
+          <h4>Stop. Don't buy gift cards.</h4>
+          <p class="do">Don't share any gift card numbers. Only scammers ask to be paid this way.</p>
+          <p class="calm">No real bill or fine is paid with gift cards. You can stop now.</p>
+        </article>
+      </div>
+
+      <div class="story glass reveal">
+        <div>
+          <h3>A rental scam, in four lines</h3>
+          <p class="intro">Some scams arrive in pieces. Each piece looks ordinary. Deducktive is built to keep track of the pieces.</p>
+          <ol>
+            <li><span>A listing shows a house for much less than the homes nearby. <em>Unusual, but not proof.</em></span></li>
+            <li><span>A short form asks you to "prequalify" before any tour. <em>Still ordinary.</em></span></li>
+            <li><span>Three hours later, an email from a free address asks for your ID, pay stubs and bank statements, then a deposit, all before a viewing. The owner is "away".</span></li>
+            <li><span>Deducktive joins the three together and says so, in plain words.</span></li>
+          </ol>
+        </div>
+        <div class="warn paper" role="img" aria-label="Illustration of the warning for the rental scam, addressed to Margaret. It reads: Stop. Don't send a deposit. Don't pay for a home you have not seen. An owner who is away is a common scam story. You have not lost anything. Keep looking, and visit before you pay.">
+          <div class="warn-from">Deducktive<span class="sp"></span><span class="for">For Margaret</span></div>
+          <svg class="stop" viewBox="0 0 24 24"><use href="#i-stop"/></svg>
+          <p class="warn-h">Stop. Don't send a deposit.</p>
+          <p class="warn-lead">Don't pay for a home you have not seen. An owner who is "away" is a common scam story.</p>
+          <p class="warn-calm">You have not lost anything. Keep looking, and visit before you pay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. How asking works -->
+  <section class="sheet field field-dawn" id="ask" aria-labelledby="ask-h">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="sec-head">
+          <p class="eyebrow">Ask</p>
+          <h2 class="h2" id="ask-h">Ask about anything you saw on your Mac.</h2>
+          <p class="lead">A number, a name, an email, a page. Deducktive answers from what was on your screen, and always shows where and when.</p>
+        </div>
+        <div class="art" data-art="ask">
+          <img src="assets/img/art-ask-400.webp" srcset="assets/img/art-ask-400.webp 1x, assets/img/art-ask-800.webp 2x" width="400" height="400" loading="lazy" decoding="async" alt="The clay duck holds a magnifying glass over three small cards: a phone number, a calendar and a note.">
+        </div>
+      </div>
+
+      <div class="asks">
+        <article class="ask reveal">
+          <h3 class="q paper"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg>What was the plumber's phone number?</h3>
+          <div class="ans paper">
+            <div class="ans-top"><b>Answer</b><span><svg class="i" aria-hidden="true"><use href="#i-mac"/></svg>From your memory on this Mac</span></div>
+            <div>
+              <p class="ans-val">(415) 555-0142</p>
+              <p class="ans-sub">The phone number for Rivera Plumbing &amp; Drain.</p>
+            </div>
+            <div class="prov">
+              <span class="appicon safari" aria-hidden="true"><svg class="i"><use href="#i-compass"/></svg></span>
+              <div>
+                <p class="where">Seen in Safari on yelp.com</p>
+                <p>Tuesday, November 3 at 3:14 PM · one week ago</p>
+                <p>Page: Rivera Plumbing &amp; Drain, San Jose</p>
+              </div>
+            </div>
+            <blockquote class="quote">Licensed and insured since 1998. Call for a free estimate: <mark>(415) 555-0142</mark>. Open Monday to Saturday, 8 am to 6 pm.</blockquote>
+          </div>
+        </article>
+
+        <article class="ask reveal">
+          <h3 class="q paper"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg>What did my bank's email say?</h3>
+          <div class="ans paper">
+            <div class="ans-top"><b>Answer</b><span><svg class="i" aria-hidden="true"><use href="#i-mac"/></svg>From your memory on this Mac</span></div>
+            <div>
+              <p class="ans-val long">Your statement is ready</p>
+              <p class="ans-sub">An email from First Harbor Bank about your October statement.</p>
+            </div>
+            <div class="prov">
+              <span class="appicon mail" aria-hidden="true"><svg class="i"><use href="#i-envelope"/></svg></span>
+              <div>
+                <p class="where">Seen in Mail, from First Harbor Bank</p>
+                <p>Yesterday at 9:02 AM</p>
+                <p>Subject: Your statement is ready</p>
+              </div>
+            </div>
+            <blockquote class="quote"><mark>Your statement is ready</mark> for the account ending <span class="hid">[account number hidden]</span>. Sign in from the First Harbor app to read it.</blockquote>
+          </div>
+        </article>
+
+        <article class="ask reveal">
+          <h3 class="q paper"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg>Where is Thursday's appointment?</h3>
+          <div class="ans paper">
+            <div class="ans-top"><b>Answer</b><span><svg class="i" aria-hidden="true"><use href="#i-mac"/></svg>From your memory on this Mac</span></div>
+            <div>
+              <p class="ans-val long">1200 Alder Street, Suite 4</p>
+              <p class="ans-sub">The address for your visit to Lakeside Eye Care.</p>
+            </div>
+            <div class="prov">
+              <span class="appicon messages" aria-hidden="true"><svg class="i"><use href="#i-message"/></svg></span>
+              <div>
+                <p class="where">Seen in Messages</p>
+                <p>Friday, November 6 at 10:05 AM · 4 days ago</p>
+                <p>Conversation with Dana</p>
+              </div>
+            </div>
+            <blockquote class="quote">Your eye appointment is Thursday at 2:30. It's at <mark>1200 Alder Street, Suite 4</mark>. I can drive you.</blockquote>
+          </div>
+        </article>
+      </div>
+
+      <ul class="rules">
+        <li class="rule glass reveal"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span><b>No source, no answer.</b> The answer must appear word for word in what you saw. If Deducktive is unsure it says "This might be it".</span></li>
+        <li class="rule glass reveal"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span><b>Honest when it can't.</b> "Couldn't find that." comes with the likely reason, such as a private window or a pause.</span></li>
+        <li class="rule glass reveal"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span><b>Forget is one click.</b> Forget one thing, a whole website, the last hour, today, or everything.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. Who it is for -->
+  <section class="field field-plain" id="families" aria-labelledby="fam-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Who it is for</p>
+        <h2 class="h2" id="fam-h">For the person at the Mac, and the person who helps them.</h2>
+        <p class="lead">If you are setting this up for a parent, here is exactly what you will and will not see. It is the same thing your parent is told.</p>
+      </div>
+
+      <h3 class="who-h reveal">For the person at the Mac: two ways to look</h3>
+      <p class="who-p reveal">You choose during setup and can change it any time. Warnings look the same in both. So does everything about privacy.</p>
+      <div class="modes">
+        <div class="mode glass reveal">
+          <h4>Simple</h4>
+          <p>Bigger words. Fewer buttons. Made for older adults, and for anyone who wants less on screen. It is the starting choice.</p>
+          <div class="sample simple paper" aria-hidden="true"><span class="s-text">The plumber's number is <span class="nw">(415) 555-0142</span>.</span><span class="pill">Copy number</span></div>
+        </div>
+        <div class="mode glass reveal">
+          <h4>Everyday</h4>
+          <p>More on screen. More controls. For people who are comfortable with their Mac and want filters and a keyboard shortcut.</p>
+          <div class="sample everyday paper" aria-hidden="true"><span class="s-text">The plumber's number is <span class="nw">(415) 555-0142</span>.</span><span class="pill">Copy number</span></div>
+        </div>
+      </div>
+
+      <h3 class="who-h reveal">For the helper: a short note, never the screen</h3>
+      <p class="who-p reveal">A helper is a family member or friend the person chooses. Adding one is optional.</p>
+      <div class="fam">
+        <div class="fam-card glass reveal">
+          <h4><span class="tick yes" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span>What a helper gets</h4>
+          <div class="note paper">
+            <p class="label">What Maya will get</p>
+            <p class="text">From Margaret's Mac (Deducktive): A likely fake tech support pop-up was stopped at 2:41 PM. Margaret closed it. Nothing else is needed, but a quick call would be kind.</p>
+          </div>
+          <p class="note-cap">The note is sent from Margaret's own Messages or Mail. The wording is fixed.</p>
+          <ul class="ticks">
+            <li><span class="tick yes" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span><span>A note when a serious scam is stopped.</span></li>
+            <li><span class="tick yes" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span><span>A note if the person chooses to continue anyway. They are told before they choose.</span></li>
+            <li><span class="tick yes" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span><span>A phone call, if the person presses "Call Maya" on a warning.</span></li>
+            <li><span class="tick yes" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span><span>Every note is kept, word for word, where the person can read it.</span></li>
+          </ul>
+        </div>
+        <div class="fam-card glass reveal">
+          <h4><span class="tick no" aria-hidden="true"><svg class="i"><use href="#i-xmark"/></svg></span>What a helper never gets</h4>
+          <ul class="ticks first">
+            <li><span class="tick no" aria-hidden="true"><svg class="i"><use href="#i-xmark"/></svg></span><span><strong>The screen.</strong> There is no remote view, no web dashboard and no companion app.</span></li>
+            <li><span class="tick no" aria-hidden="true"><svg class="i"><use href="#i-xmark"/></svg></span><span><strong>The memory.</strong> A helper cannot read it or search it. It opens only at that Mac.</span></li>
+            <li><span class="tick no" aria-hidden="true"><svg class="i"><use href="#i-xmark"/></svg></span><span><strong>The words.</strong> No text from the page, the email or the message. No numbers from it.</span></li>
+            <li><span class="tick no" aria-hidden="true"><svg class="i"><use href="#i-xmark"/></svg></span><span><strong>The name of the app or website,</strong> unless the person turns that on.</span></li>
+            <li><span class="tick no" aria-hidden="true"><svg class="i"><use href="#i-xmark"/></svg></span><span><strong>Control.</strong> A helper cannot change settings, end a pause, or turn anything on.</span></li>
+            <li><span class="tick no" aria-hidden="true"><svg class="i"><use href="#i-xmark"/></svg></span><span><strong>Notes about small things.</strong> Gentle "might be" notes are never sent to a helper.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Privacy -->
+  <section class="sheet field field-night" id="privacy" aria-labelledby="privacy-h">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="sec-head">
+          <p class="eyebrow">Privacy, precisely</p>
+          <h2 class="h2" id="privacy-h">Exactly what it reads, saves, hides and sends.</h2>
+          <p class="lead">An app that reads your screen owes you plain answers. Here they are. If any line is unclear, the mistake is on this page.</p>
+        </div>
+        <div class="art" data-art="private">
+          <img src="assets/img/art-private-400.webp" srcset="assets/img/art-private-400.webp 1x, assets/img/art-private-800.webp 2x" width="400" height="400" loading="lazy" decoding="async" alt="The clay duck sits with an arm around a small laptop that shows a closed padlock.">
+        </div>
+      </div>
+
+      <table class="ptable glass reveal">
+        <caption class="vh">What Deducktive reads, saves, leaves out, hides and sends</caption>
+        <tbody>
+          <tr>
+            <th scope="row">What it reads</th>
+            <td>
+              <p>The words showing on your screen, the name of the app, the window or page title, the website address, and the time.</p>
+              <p>It reads what is displayed. It does not record your keystrokes. It does not record sound.</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">What it saves</th>
+            <td>
+              <p>Text only: the words, where they were, and when. No screenshots, no thumbnails, no video, no audio.</p>
+              <p>It is kept for 1 year unless you choose 1 month, 3 months, or "until I forget it".</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Where it is kept, and how it is locked</th>
+            <td>
+              <p>On this Mac only. The saved text is encrypted with a key that this Mac holds and that never leaves it. A copied disk or a backup cannot be read.</p>
+              <p>Opening it needs Touch ID, an Apple Watch or your Mac login password. There is no separate Deducktive password to forget. It locks again when the Mac sleeps or locks, after a few minutes without use, and whenever the screen is being shared.</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">What it never reads</th>
+            <td>
+              <ul class="two">
+                <li>Password boxes</li>
+                <li>Private browsing windows</li>
+                <li>Password apps, and the Passwords settings</li>
+                <li>Windows that ask not to be captured</li>
+                <li>Shared or remote-controlled screens</li>
+                <li>Any app or website you leave out</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">What it never remembers</th>
+            <td>
+              <p>Bank, investment, tax, payroll and patient websites, and payment pages. Scam protection may check the words on such a page while it is in front of you. Nothing from it is saved.</p>
+              <p class="muted">An email from your bank is remembered, with the numbers hidden, so that you can ask what it said.</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">What it hides before saving</th>
+            <td>
+              <ul class="two">
+                <li>Card numbers and security codes</li>
+                <li>Social Security and other ID numbers</li>
+                <li>One-time codes</li>
+                <li>Passwords shown on screen</li>
+                <li>Bank account and routing numbers</li>
+                <li>Recovery keys and seed phrases</li>
+              </ul>
+              <p>The saved text reads, for example, "Card ending [card number hidden]".</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">What leaves your Mac</th>
+            <td>
+              <p><strong>By default, nothing.</strong> No account. No sync. No cloud service reads your screen or answers your questions.</p>
+              <ul>
+                <li><strong>Helper notes, if you add a helper.</strong> A short fixed note, sent from your own Messages or Mail. It never contains what was on the screen.</li>
+                <li><strong>Things you ask for.</strong> "Open page" opens that page in your browser. "Call" starts a call.</li>
+                <li><strong>Lookups that use the internet.</strong> Off by default. Any such lookup is named in Settings and sends only the smallest piece it needs, never the words on your screen.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Which AI models run</th>
+            <td>
+              <p>All of the AI runs on your Mac. Where it is available and turned on, Deducktive uses Apple's on-device model, the one built into macOS. Otherwise it uses a smaller open model that also runs on your Mac.</p>
+              <p>Simple rules run before either model, and scam protection keeps working on rules alone if no model is available. No cloud model is ever called.</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Permissions it asks for, and why</th>
+            <td>
+              <ul>
+                <li><strong>Screen Recording</strong> (macOS calls it "Screen &amp; System Audio Recording"). This lets Deducktive read the words on your screen. It never saves pictures or sound.</li>
+                <li><strong>Accessibility.</strong> This tells Deducktive which app and page the words came from. It also lets it close a scam page when you ask.</li>
+                <li><strong>Notifications</strong> (optional). This lets Deducktive show a gentle note when something looks wrong.</li>
+              </ul>
+              <p class="muted">Nothing is read until you have finished setup and pressed "Start Deducktive".</p>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">What you control</th>
+            <td>
+              <p>Pause in one click. Forget one thing, a website, an app, the last hour, today, or everything. Leave out any app or website. Quit whenever you like. "Erase everything and quit" removes the memory, the settings and the key.</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="limits glass reveal">
+        <h3><svg class="i" aria-hidden="true"><use href="#i-info"/></svg>Honest limits</h3>
+        <ul>
+          <li>It can miss a scam. It can also warn about something that is fine. Treat it as a second opinion, not a guarantee.</li>
+          <li>It only sees this Mac's screen. It cannot hear a phone call, and it cannot see your phone.</li>
+          <li>It cannot help while it is paused, or in windows it never reads, such as private windows.</li>
+          <li>Anyone who knows your Mac login password can open the memory at your Mac, just as they can open your Mail.</li>
+          <li>It is early software and still being built. Some of what is described here may change before release.</li>
+          <li>No accuracy or speed measurements have been published yet, so this page makes no claims about either.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Consent and control -->
+  <section class="field field-plain" id="control" aria-labelledby="control-h">
+    <div class="wrap">
+      <div class="split reveal">
+        <div class="sec-head">
+          <p class="eyebrow">In plain sight</p>
+          <h2 class="h2" id="control-h">Used with the person's knowledge, or not at all.</h2>
+          <p class="lead">Deducktive is for protecting someone who wants it. These four things are built in and cannot be switched off.</p>
+        </div>
+        <div class="art" data-art="control">
+          <img src="assets/img/art-control-400.webp" srcset="assets/img/art-control-400.webp 1x, assets/img/art-control-800.webp 2x" width="400" height="400" loading="lazy" decoding="async" alt="The clay duck rests a hand on a large pause button.">
+        </div>
+      </div>
+
+      <ul class="consent">
+        <li class="glass reveal">
+          <div class="ic" aria-hidden="true"><svg class="i"><use href="#i-hand"/></svg></div>
+          <h3>They are asked, by name</h3>
+          <p>If you set it up for someone, setup stops and asks them: "Margaret, is this OK with you?" It cannot go on until they answer at the Mac.</p>
+        </li>
+        <li class="glass reveal">
+          <div class="ic" aria-hidden="true"><svg class="i"><use href="#i-eye"/></svg></div>
+          <h3>A duck you can always see</h3>
+          <p>The duck sits in the menu bar whenever Deducktive can read the screen. If the duck is hidden, reading stops.</p>
+        </li>
+        <li class="glass reveal">
+          <div class="ic" aria-hidden="true"><svg class="i fill"><use href="#i-pause"/></svg></div>
+          <h3>Pause in one click</h3>
+          <p>Click the duck and choose 15 minutes, 1 hour, or until tomorrow. While paused, nothing is read.</p>
+        </li>
+        <li class="glass reveal">
+          <div class="ic" aria-hidden="true"><svg class="i"><use href="#i-eye-slash"/></svg></div>
+          <h3>No hidden mode</h3>
+          <p>There is no stealth setting. Once a week it asks, "Is that still OK?" It quits and goes in the Trash like any app.</p>
+        </li>
+      </ul>
+      <p class="plain-line reveal"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span><strong>Deducktive is not for watching another adult.</strong> If that is the goal, this is the wrong app. It is designed to make that hard.</span></p>
+    </div>
+  </section>
+
+  <!-- 8. Early access -->
+  <section class="early sheet field field-ember" id="early-access" aria-labelledby="early-h">
+    <div class="early-card">
+      <div class="reveal">
+        <p class="eyebrow">Early access</p>
+        <h2 id="early-h">Deducktive is still being built.</h2>
+        <p>There is nothing to download yet, and nothing to sign up for. This page has no form and collects nothing about you. When early access opens, this is where it will say so.</p>
+      </div>
+      <ul class="facts glass reveal" aria-label="Where things stand today">
+        <li><svg class="i" aria-hidden="true"><use href="#i-tools"/></svg>In development</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-download-off"/></svg>Nothing to download yet</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-form-off"/></svg>No form, no sign-up</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-mac"/></svg>For Macs with Apple silicon, macOS 26 or later</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. FAQ -->
+  <section class="field field-plain" id="faq" aria-labelledby="faq-h">
+    <div class="wrap narrow">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Questions</p>
+        <h2 class="h2" id="faq-h">Fair questions, plain answers.</h2>
+      </div>
+      <div class="faq">
+        <details class="glass" open>
+          <summary>Is this spyware?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>No. Spyware hides, and it reports to someone else. Deducktive does neither.</p>
+            <p>The duck is in the menu bar whenever it can read the screen, and no setting hides it. There is no remote view. What it remembers opens only at that Mac, with Touch ID or the Mac password. Once a week it asks whether remembering is still OK.</p>
+          </div>
+        </details>
+        <details class="glass">
+          <summary>Can my family read my screen?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>No. A helper gets a short note when a serious scam is stopped, or when you choose to carry on past a warning. The note names the kind of scam and the time. It never contains what was on your screen.</p>
+            <p>A helper cannot search your memory or change your settings. You can read every note that was sent.</p>
+          </div>
+        </details>
+        <details class="glass">
+          <summary>Does it slow my Mac down?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>It is designed to stay light. It reads when something on the screen changes, saves text instead of pictures or video, and uses the larger model only when something looks wrong or when you ask a question.</p>
+            <p>No measurements have been published yet, so there are no numbers here.</p>
+          </div>
+        </details>
+        <details class="glass">
+          <summary>What does it cost?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>Not decided yet. There is nothing to buy today, and no account to create.</p>
+          </div>
+        </details>
+        <details class="glass">
+          <summary>Does it need the internet?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>Not to do its job. Scam protection and Ask run on the Mac, so they work without a connection. Sending a helper note needs Messages or Mail, which use the internet as usual.</p>
+          </div>
+        </details>
+        <details class="glass">
+          <summary>What if it gets something wrong?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>It sometimes will. Every warning has a way past it, in your own words: "It's fine" or "I'm sure it's fine". Nothing is deleted or blocked without your say.</p>
+            <p>Later you can mark "That was not a scam", and Deducktive will not warn about that page again.</p>
+          </div>
+        </details>
+        <details class="glass">
+          <summary>Which Macs does it work on?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>A Mac with Apple silicon, running macOS 26 or later. It does not run on Intel Macs. Deducktive is a Mac app. There is no iPhone, iPad or Windows version.</p>
+          </div>
+        </details>
+        <details class="glass">
+          <summary>How do I remove it?<svg class="i" aria-hidden="true"><use href="#i-chevron"/></svg></summary>
+          <div class="a">
+            <p>Like any Mac app. Choose "Erase everything and quit" to remove the memory, the settings and the key. Then drag Deducktive to the Trash.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing moment -->
+  <div class="closing">
+    <div class="wrap reveal">
+      <img src="assets/img/duck-wave-168.webp" srcset="assets/img/duck-wave-168.webp 1x, assets/img/duck-wave-336.webp 2x" width="168" height="168" loading="lazy" decoding="async" alt="The clay duck waves.">
+      <p>Sharp eyes. Calm waters.</p>
+      <a class="btn btn-glass glass" href="#top">Back to the top</a>
+    </div>
+  </div>
+
 </main>
+
+<footer class="site-footer sheet field field-night">
+  <div class="wrap">
+    <div>
+      <a class="wordmark" href="#top" aria-label="Deducktive, back to the top"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/img/logo-dark-88.webp"><img src="assets/img/logo-88.webp" width="44" height="44" loading="lazy" alt=""></picture>Deducktive</a>
+      <p class="tag">Sharp eyes. Calm waters.</p>
+      <p>A Mac app that spots scams as they happen and remembers what you saw. In development.</p>
+      <p>This page uses no cookies, no trackers and no forms.</p>
+      <p>© 2026 Deducktive</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <ul>
+        <li><a href="#what">What it does</a></li>
+        <li><a href="#protect">Scam protection</a></li>
+        <li><a href="#ask">Ask</a></li>
+        <li><a href="#families">Families</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#control">In plain sight</a></li>
+        <li><a href="#early-access">Early access</a></li>
+        <li><a href="#faq">Questions</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
 </body>
 </html>

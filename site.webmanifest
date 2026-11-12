@@ -1,0 +1,15 @@
+{
+  "name": "Deducktive",
+  "short_name": "Deducktive",
+  "description": "A Mac app, still in development, that spots scams as they happen and remembers what you saw. Everything stays on your Mac.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#FBFAF7",
+  "theme_color": "#F6AA1E",
+  "icons": [
+    { "src": "/assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
