@@ -6,12 +6,13 @@
 <title>Deducktive</title>
 <meta name="description" content="Deducktive is a Mac app in development that warns you about scams as they happen and remembers what you saw, all on your own Mac.">
 <link rel="canonical" href="https://deducktive.com/">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32-dark.png" media="(prefers-color-scheme: dark)">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#FDC837" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#F6AA1E" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1C1A2E" media="(prefers-color-scheme: dark)">
 <style>
-  :root { --bg1: #FFE9A8; --bg2: #FDC837; --bg3: #F4A23A; --ink: #26223F; --ink2: #4A4973; --glass: rgba(255, 255, 255, .58); --edge: rgba(255, 255, 255, .8); }
+  :root { --bg1: #FFD98A; --bg2: #F6AA1E; --bg3: #E07A10; --ink: #26223F; --ink2: #4A4973; --glass: rgba(255, 255, 255, .58); --edge: rgba(255, 255, 255, .8); }
   @media (prefers-color-scheme: dark) {
     :root { --bg1: #2B2748; --bg2: #1C1A2E; --bg3: #5A3410; --ink: #FFF6DF; --ink2: #D9D3F0; --glass: rgba(40, 36, 68, .55); --edge: rgba(255, 255, 255, .16); }
   }
@@ -39,7 +40,10 @@
 </head>
 <body>
 <main>
-  <img src="assets/icon-256.webp" srcset="assets/icon-256.webp 1x, assets/icon-512.webp 2x" width="168" height="168" alt="Deducktive app icon: a clay duck in a detective hat">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/icon-dark-256.webp 1x, assets/icon-dark-512.webp 2x">
+    <img src="assets/icon-256.webp" srcset="assets/icon-256.webp 1x, assets/icon-512.webp 2x" width="168" height="168" alt="Deducktive app icon: a clay duck in a detective hat">
+  </picture>
   <h1>Deducktive</h1>
   <p class="tag">Sharp eyes. Calm waters.</p>
   <p>A Mac app that warns you about scams as they happen and helps you find things you saw before.</p>
