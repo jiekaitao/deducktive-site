@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deducktive</title>
+<meta name="description" content="Deducktive is a Mac app in development that warns you about scams as they happen and remembers what you saw, all on your own Mac.">
+<link rel="canonical" href="https://deducktive.com/">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#FDC837" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1A2E" media="(prefers-color-scheme: dark)">
+<style>
+  :root { --bg1: #FFE9A8; --bg2: #FDC837; --bg3: #F4A23A; --ink: #26223F; --ink2: #4A4973; --glass: rgba(255, 255, 255, .58); --edge: rgba(255, 255, 255, .8); }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg1: #2B2748; --bg2: #1C1A2E; --bg3: #5A3410; --ink: #FFF6DF; --ink2: #D9D3F0; --glass: rgba(40, 36, 68, .55); --edge: rgba(255, 255, 255, .16); }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font: 18px/1.5 ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--ink);
+    background: radial-gradient(120% 90% at 15% 10%, var(--bg1), transparent 60%), radial-gradient(90% 80% at 90% 95%, var(--bg3), transparent 60%), var(--bg2);
+    display: grid; place-items: center; padding: 24px;
+  }
+  main {
+    width: min(100%, 560px); text-align: center; padding: 44px 32px 36px;
+    background: var(--glass); border: 1px solid var(--edge); border-radius: 32px;
+    -webkit-backdrop-filter: blur(22px) saturate(1.3); backdrop-filter: blur(22px) saturate(1.3);
+    box-shadow: 0 24px 60px rgba(50, 46, 75, .22);
+  }
+  img { width: 168px; height: 168px; display: block; margin: 0 auto 20px; }
+  h1 { font-size: clamp(2.2rem, 7vw, 3rem); line-height: 1.1; margin: 0 0 8px; letter-spacing: -.02em; }
+  .tag { font-size: 1.25rem; color: var(--ink2); margin: 0 0 22px; font-weight: 600; }
+  p { margin: 0 auto 14px; max-width: 34ch; }
+  .note { font-size: 1rem; color: var(--ink2); margin-top: 22px; }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { main { background: var(--bg1); } }
+</style>
+</head>
+<body>
+<main>
+  <img src="assets/icon-256.webp" srcset="assets/icon-256.webp 1x, assets/icon-512.webp 2x" width="168" height="168" alt="Deducktive app icon: a clay duck in a detective hat">
+  <h1>Deducktive</h1>
+  <p class="tag">Sharp eyes. Calm waters.</p>
+  <p>A Mac app that warns you about scams as they happen and helps you find things you saw before.</p>
+  <p>Everything stays on your own Mac.</p>
+  <p class="note">In development. Nothing to download yet. The full site is on its way.</p>
+</main>
+</body>
+</html>
